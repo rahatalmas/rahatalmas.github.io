@@ -143,12 +143,30 @@
     gap: 5px;
 }
 
+/* Hamburger animation to X */
 .hamburger span {
-    width: 25px;
+    display: block;
     height: 3px;
+    width: 25px;
     background: var(--text-light);
     border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
 }
+
+/* When active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -875,11 +893,13 @@
 
     <script>
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+const navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active'); // toggle X animation
+});
+
 </script>
 
     <script>
